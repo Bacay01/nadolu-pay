@@ -11,10 +11,10 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-navy: #003A70;
-  --color-primary: #0066B3;
-  --color-primary-dark: #00558F; /* derived hover shade, not a separate palette color */
-  --color-primary-light: #EAF4FC;
+  --color-navy: #0A2647;
+  --color-primary: #144272;
+  --color-primary-dark: #0F3157; /* derived hover shade, not a separate palette color */
+  --color-primary-light: #E8F1FA;
   --color-page: #F5F7FA;
   --color-surface: #FFFFFF;
   --color-text: #111827;

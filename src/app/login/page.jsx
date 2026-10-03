@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import PasswordInput from "@/components/PasswordInput";
-import NimbusLogo from "@/components/NimbusLogo";
+import AnadoluLogo from "@/components/AnadoluLogo";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -56,17 +56,17 @@ export default function LoginPage() {
 
       <div className="flex-1 flex flex-col justify-center px-6 pt-14 pb-8 md:items-center md:text-center md:pt-20">
         <div className="flex items-center gap-2 text-white">
-          <span className="font-bold text-3xl tracking-tight">Chase</span>
-          <NimbusLogo className="w-8 h-8" />
+          <span className="font-bold text-3xl tracking-tight">Anadolu-Bank</span>
+          <AnadoluLogo className="w-8 h-8" />
         </div>
         <p className="mt-3 text-white/90 text-lg max-w-xs md:max-w-sm">
-          Build a stronger financial future with Chase.
+          Build a stronger financial future with Anadolu-Bank.
         </p>
       </div>
 
       <div className="w-full md:max-w-md md:mx-auto md:pb-16">
         <div className="bg-white rounded-t-3xl md:rounded-3xl shadow-2xl px-6 py-8 md:px-8">
-          <h1 className="text-2xl font-bold text-navy">Log in to Chase</h1>
+          <h1 className="text-2xl font-bold text-navy">Log in to Anadolu-Bank</h1>
           {error && <p className="mt-3 text-sm text-danger">{error}</p>}
 
           {stage === "credentials" && (

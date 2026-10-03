@@ -4,7 +4,7 @@ import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import AdminAccountRow from "@/components/admin/AdminAccountRow";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 export default async function AdminUserDetailPage({ params }) {

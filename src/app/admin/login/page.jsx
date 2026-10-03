@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
     <main className="min-h-screen flex items-center justify-center bg-navy">
       <form onSubmit={handleSubmit} className="w-full max-w-sm bg-surface p-8 rounded-lg shadow">
         <div className="flex items-center gap-2 mb-1">
-          <span className="font-bold text-lg text-navy">Chase</span>
+          <span className="font-bold text-lg text-navy">Anadolu-Bank</span>
           <span className="text-xs font-bold uppercase tracking-wide bg-danger text-white px-2 py-0.5 rounded">
             Admin
           </span>

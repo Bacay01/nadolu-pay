@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import NimbusLogo from "./NimbusLogo"
+import AnadoluLogo from "./AnadoluLogo"
 import FrozenGuardedLink from "./FrozenGuardedLink";
 
 const navLinks = [
@@ -70,8 +70,8 @@ export default function AppHeader({ frozenNotice }) {
             <MenuIcon className="w-6 h-6" />
           </button>
           <Link href="/dashboard" className="flex items-center gap-1.5 sm:gap-2 text-white min-w-0">
-            <span className="font-bold text-base sm:text-lg tracking-tight shrink-0">Chase</span>
-            <NimbusLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+            <span className="font-bold text-base sm:text-lg tracking-tight shrink-0">Anadolu-Bank</span>
+            <AnadoluLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
             <span className="hidden sm:inline text-sm font-medium text-white/80 whitespace-nowrap">for Personal</span>
           </Link>
         </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import AdminTransactionHistory from "./AdminTransactionHistory";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };

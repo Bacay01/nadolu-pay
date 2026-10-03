@@ -1,5 +1,5 @@
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 export default function CreditCardSummaryCard({ card }) {
@@ -13,7 +13,7 @@ export default function CreditCardSummaryCard({ card }) {
 
       <div className="px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <p className="text-[17px] font-medium text-text">Chase Credit Card</p>
+          <p className="text-[17px] font-medium text-text">Anadolu-Bank Credit Card</p>
           <p className="text-[14px] text-text-secondary mt-0.5">•••• {card.cardNumber.slice(-4)}</p>
         </div>
         <div className="sm:text-right">

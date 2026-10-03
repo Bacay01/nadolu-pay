@@ -4,7 +4,7 @@ import { useState } from "react";
 import FrozenNoticeToast, { useFrozenNotice } from "@/components/FrozenNoticeToast";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };

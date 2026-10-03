@@ -17,7 +17,7 @@ import LinkExternalAccountsCard from "@/components/LinkExternalAccountsCard";
 import OpenAccountSection from "@/components/OpenAccountSection";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };

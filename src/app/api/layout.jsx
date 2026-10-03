@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Chase",
+  title: "Anadolu-Bank",
   description: "A simple, modern way to manage your money.",
 };
 

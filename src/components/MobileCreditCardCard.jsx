@@ -1,5 +1,5 @@
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 function ChevronRight(props) {
@@ -20,7 +20,7 @@ export default function MobileCreditCardCard({ card }) {
       </div>
       <div className="px-5 py-4">
         <button className="w-full flex items-center justify-between text-[17px] font-medium text-text">
-          <span>Chase Credit Card •••• {card.cardNumber.slice(-4)}</span>
+          <span>Anadolu-Bank Credit Card •••• {card.cardNumber.slice(-4)}</span>
           <ChevronRight className="w-4 h-4 text-text-secondary shrink-0 ml-2" />
         </button>
         <div className="mt-4 text-right">

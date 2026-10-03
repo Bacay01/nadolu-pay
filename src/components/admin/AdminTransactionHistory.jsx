@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return new Date(date).toLocaleDateString("tr-TR", { month: "short", day: "numeric", year: "numeric" });
 }
 
 export default function AdminTransactionHistory({ accountId, transactions }) {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import NimbusLogo from "./NimbusLogo";
+import AnadoluLogo from "./AnadoluLogo";
 
 function BellIcon(props) {
   return (
@@ -31,8 +31,8 @@ export default function MobileHeader() {
         </button>
 
         <Link href="/dashboard" className="flex items-center gap-1.5 text-primary">
-          <span className="font-bold text-base tracking-tight">Chase</span>
-          <NimbusLogo className="w-5 h-5" />
+          <span className="font-bold text-base tracking-tight">Anadolu-Bank</span>
+          <AnadoluLogo className="w-5 h-5" />
         </Link>
 
         <button onClick={() => signOut({ callbackUrl: "/login" })} className="text-primary" aria-label="Profile / sign out">

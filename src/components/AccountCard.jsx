@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };
@@ -18,7 +18,7 @@ export default function AccountCard({ type, account }) {
       <div className="px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <p className="text-[17px] font-medium text-text flex items-center gap-2">
-            Chase {label}
+            Anadolu-Bank {label}
             {account.frozen && <span className="text-xs font-semibold text-danger">FROZEN</span>}
           </p>
           <p className="text-[14px] text-text-secondary mt-0.5">•••• {account.accountNumber.slice(-4)}</p>

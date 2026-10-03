@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
-export const ADMIN_COOKIE_NAME = "Nimbus_admin_session";
+export const ADMIN_COOKIE_NAME = "Anadolu_admin_session";
 
 export function createAdminToken(admin) {
   return jwt.sign({ id: admin.id, email: admin.email, name: admin.name }, process.env.ADMIN_JWT_SECRET, {

@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 function formatMoney(amount) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Number(amount));
+  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
 }
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  return new Date(date).toLocaleDateString("tr-TR", { month: "short", day: "numeric" });
 }
 
 export default function RecentActivityCard({ transactions, title = "Recent activity", viewAllHref }) {

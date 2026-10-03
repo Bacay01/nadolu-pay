@@ -20,7 +20,7 @@ function MoneyBagIcon(props) {
 
 function formatMoney(amount) {
   const sign = amount < 0 ? "-" : "";
-  return `${sign}${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(Math.abs(amount))}`;
+  return `${sign}${new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Math.abs(amount))}`;
 }
 
 export default function MobileSnapshotCard({ monthlyNet, frozenNotice }) {
