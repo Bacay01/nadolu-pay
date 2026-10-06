@@ -31,6 +31,8 @@ function ArrowRight(props) {
 
 export default function TransferForm({ accounts, frozenNotice }) {
   const [fromAccountId, setFromAccountId] = useState("");
+  const [toAccountName, setToAccountName] = useState("");
+  const [toAccountType, setToAccountType] = useState("");
   const [toAccountNumber, setToAccountNumber] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
@@ -52,7 +54,14 @@ export default function TransferForm({ accounts, frozenNotice }) {
     const res = await fetch("/api/transfer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fromAccountId, toAccountNumber, amount, description }),
+      body: JSON.stringify({
+        fromAccountId,
+        toAccountName,
+        toAccountType,
+        toAccountNumber,
+        amount,
+        description,
+      }),
     });
 
     const data = await res.json();
@@ -63,8 +72,13 @@ export default function TransferForm({ accounts, frozenNotice }) {
       return;
     }
 
-    setStatus({ type: "success", message: `Sent $${amount} to account ending ${toAccountNumber.slice(-4)}.` });
+    setStatus({
+      type: "success",
+      message: `Sent ${formatMoney(amount)} to ${toAccountName || "account ending " + toAccountNumber.slice(-4)}.`,
+    });
     setFromAccountId("");
+    setToAccountName("");
+    setToAccountType("");
     setToAccountNumber("");
     setAmount("");
     setDescription("");
@@ -110,6 +124,33 @@ export default function TransferForm({ accounts, frozenNotice }) {
         </select>
 
         <label className="block mt-5 text-xs font-bold tracking-wide text-text-secondary uppercase">
+          Recipient account name
+        </label>
+        <input
+          required
+          value={toAccountName}
+          onChange={(e) => setToAccountName(e.target.value)}
+          placeholder="Enter the name on the account"
+          className="mt-2 w-full bg-page border border-border rounded-2xl px-4 py-3.5 text-text placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+        />
+
+        <label className="block mt-5 text-xs font-bold tracking-wide text-text-secondary uppercase">
+          Recipient account type
+        </label>
+        <select
+          required
+          value={toAccountType}
+          onChange={(e) => setToAccountType(e.target.value)}
+          className="mt-2 w-full bg-page border border-border rounded-2xl px-4 py-3.5 text-text focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <option value="" disabled>
+            Select account type
+          </option>
+          <option value="checking">Checking</option>
+          <option value="savings">Savings</option>
+        </select>
+
+        <label className="block mt-5 text-xs font-bold tracking-wide text-text-secondary uppercase">
           To account number
         </label>
         <input
@@ -122,7 +163,7 @@ export default function TransferForm({ accounts, frozenNotice }) {
 
         <label className="block mt-5 text-xs font-bold tracking-wide text-text-secondary uppercase">Amount</label>
         <div className="mt-2 relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text font-semibold">$</span>
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text font-semibold">₺</span>
           <input
             type="number"
             required

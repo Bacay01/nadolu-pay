@@ -19,13 +19,9 @@ export default function AccountCard({ type, account }) {
         <div>
           <p className="text-[17px] font-medium text-text flex items-center gap-2">
             Anadolu-Bank {label}
-            {account.frozen && <span className="text-xs font-semibold text-danger">FROZEN</span>}
           </p>
           <p className="text-[14px] text-text-secondary mt-0.5">•••• {account.accountNumber.slice(-4)}</p>
-          {account.frozen && account.frozenReason && (
-            <p className="text-xs text-danger mt-1">{account.frozenReason}</p>
-          )}
-        </div>
+                  </div>
         <div className="sm:text-right">
           <p className="text-[13px] text-text-secondary">Available balance</p>
           <p className="text-[38px] font-semibold text-text leading-tight">{formatMoney(account.balance)}</p>

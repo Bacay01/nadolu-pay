@@ -24,14 +24,10 @@ export default function MobileAccountCard({ type, account }) {
         <button className="w-full flex items-center justify-between text-[17px] font-medium text-text">
           <span>
             Anadolu-Bank {label} •••• {account.accountNumber.slice(-4)}
-            {account.frozen && <span className="text-xs font-semibold text-danger ml-2">FROZEN</span>}
           </span>
           <ChevronRight className="w-4 h-4 text-text-secondary shrink-0 ml-2" />
         </button>
-        {account.frozen && account.frozenReason && (
-          <p className="text-xs text-danger mt-1 text-left">{account.frozenReason}</p>
-        )}
-        <div className="mt-4 text-right">
+                <div className="mt-4 text-right">
           <p className="text-[40px] font-semibold text-text leading-tight">{formatMoney(account.balance)}</p>
           <p className="text-sm text-text-secondary mt-1">Available balance</p>
         </div>
