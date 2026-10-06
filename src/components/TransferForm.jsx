@@ -196,6 +196,8 @@ export default function TransferForm({ accounts, frozenNotice }) {
         </button>
       </form>
 
+      
+
       <FrozenNoticeToast notice={notice} onDismiss={dismiss} />
     </div>
   );
