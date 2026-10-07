@@ -186,6 +186,9 @@ export default function TransferForm({ accounts, frozenNotice }) {
           className="mt-2 w-full bg-page border border-border rounded-2xl px-4 py-3.5 text-text placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary"
         />
 
+
+
+
         <button
           type="submit"
           disabled={loading}
@@ -196,7 +199,7 @@ export default function TransferForm({ accounts, frozenNotice }) {
         </button>
       </form>
 
-      
+
 
       <FrozenNoticeToast notice={notice} onDismiss={dismiss} />
     </div>
