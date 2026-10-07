@@ -36,7 +36,7 @@ export default function MobileQuickActions() {
         >
           <PlusIcon className="w-5 h-5" />
         </Link>
-        <ActionPill href="/transfer">Send</ActionPill>
+        <ActionPill href="/transfer">Send Transfer</ActionPill>
         <ActionPill disabled>Deposit checks</ActionPill>
         <ActionPill disabled>Pay bills</ActionPill>
         <ActionPill disabled>Transfer</ActionPill>
