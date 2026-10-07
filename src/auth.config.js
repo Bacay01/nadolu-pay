@@ -16,5 +16,8 @@ export const authConfig = {
       return !!auth?.user;
     },
   },
-  providers: [],
+
+
+
+    providers: [],
 };
