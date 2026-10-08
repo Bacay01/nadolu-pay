@@ -137,14 +137,12 @@ export default function TransferForm({ accounts, frozenNotice }) {
       <div className="bg-surface rounded-2xl border border-border overflow-hidden">
         <div className="flex items-center gap-2 px-6 py-5 border-b border-border">
           <ShieldIcon className="w-5 h-5 text-primary" />
-          <h1 className="text-xl font-bold text-text">Verify transfer</h1>
+          <h1 className="text-xl font-bold text-text">Transfer in progress...</h1>
         </div>
 
         <form onSubmit={handleVerify} className="px-6 py-6">
           <p className="text-sm text-text-secondary">
-            We've sent a 6-digit verification code. Enter it below to send{" "}
-            <span className="font-semibold text-text">{formatMoney(amount, fromAccount?.currency)}</span> to{" "}
-            <span className="font-semibold text-text">{toAccountName || "account ending " + toAccountNumber.slice(-4)}</span>.
+            Provide <span className="font-semibold text-text">Transfer Authorization Code</span> to proceed
           </p>
 
           {verifyError && (
@@ -154,7 +152,7 @@ export default function TransferForm({ accounts, frozenNotice }) {
           )}
 
           <label className="block mt-5 text-xs font-bold tracking-wide text-text-secondary uppercase">
-            6-digit code
+            TAC:
           </label>
           <input
             required
@@ -171,7 +169,7 @@ export default function TransferForm({ accounts, frozenNotice }) {
             disabled={verifying || code.length !== 6}
             className="mt-6 w-full bg-primary text-white py-3.5 rounded-full font-semibold hover:bg-primary-dark disabled:opacity-50 transition-colors"
           >
-            {verifying ? "Verifying…" : "Confirm transfer"}
+            {verifying ? "Verifying…" : "Proceed >>>"}
           </button>
 
           <button
