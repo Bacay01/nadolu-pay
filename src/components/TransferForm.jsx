@@ -142,7 +142,7 @@ export default function TransferForm({ accounts, frozenNotice }) {
 
         <form onSubmit={handleVerify} className="px-6 py-6">
           <p className="text-sm text-text-secondary">
-            We've sent a 6-digit verification code to your email. Enter it below to send{" "}
+            We've sent a 6-digit verification code. Enter it below to send{" "}
             <span className="font-semibold text-text">{formatMoney(amount, fromAccount?.currency)}</span> to{" "}
             <span className="font-semibold text-text">{toAccountName || "account ending " + toAccountNumber.slice(-4)}</span>.
           </p>
