@@ -3,15 +3,18 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
+const CURRENCY_LOCALES = { TRY: "tr-TR", USD: "en-US", GBP: "en-GB", EUR: "de-DE" };
+
+function formatMoney(amount, currency = "TRY") {
+  const locale = CURRENCY_LOCALES[currency] || "tr-TR";
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(Number(amount));
 }
 
 function formatDate(date) {
   return new Date(date).toLocaleDateString("tr-TR", { month: "short", day: "numeric", year: "numeric" });
 }
 
-export default function AdminTransactionHistory({ accountId, transactions }) {
+export default function AdminTransactionHistory({ accountId, transactions, currency = "TRY" }) {
   const router = useRouter();
   const [type, setType] = useState("credit");
   const [amount, setAmount] = useState("");
@@ -157,7 +160,7 @@ export default function AdminTransactionHistory({ accountId, transactions }) {
                 <div className="flex items-center gap-2 shrink-0">
                   <span className={txn.direction === "credit" ? "text-success font-medium" : "text-text font-medium"}>
                     {txn.direction === "credit" ? "+" : "-"}
-                    {formatMoney(txn.amount)}
+                    {formatMoney(txn.amount, currency)}
                   </span>
                   <button onClick={() => startEdit(txn)} className="text-primary hover:underline">
                     Edit

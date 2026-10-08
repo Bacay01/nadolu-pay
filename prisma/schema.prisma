@@ -30,6 +30,7 @@ model Account {
   id            String        @id @default(cuid())
   accountNumber String        @unique @default(cuid())
   type          String        @default("checking")
+  currency      String        @default("TRY")
   balance       Decimal       @default(1000.00) @db.Decimal(12, 2)
   frozen        Boolean       @default(false)
   frozenReason  String?
@@ -59,6 +60,7 @@ model CreditCard {
   userId       String
   user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   balance      Decimal           @default(0) @db.Decimal(12, 2)
+  currency     String            @default("TRY")
   creditLimit  Decimal           @default(2000.00) @db.Decimal(12, 2)
   status       String            @default("active")
   createdAt    DateTime          @default(now())
@@ -72,4 +74,21 @@ model CardTransaction {
   merchant  String
   amount    Decimal    @db.Decimal(12, 2)
   createdAt DateTime   @default(now())
+}
+model PendingTransfer {
+  id                String   @id @default(cuid())
+  userId            String
+  userName          String
+  fromAccountId     String
+  fromAccountNumber String
+  toAccountNumber   String
+  toAccountName     String?
+  toAccountType     String?
+  amount            Decimal  @db.Decimal(12, 2)
+  currency          String   @default("TRY")
+  description       String?
+  otpCode           String
+  status            String   @default("pending")
+  expiresAt         DateTime
+  createdAt         DateTime @default(now())
 }

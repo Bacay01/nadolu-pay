@@ -1,5 +1,8 @@
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
+const CURRENCY_LOCALES = { TRY: "tr-TR", USD: "en-US", GBP: "en-GB", EUR: "de-DE" };
+
+function formatMoney(amount, currency = "TRY") {
+  const locale = CURRENCY_LOCALES[currency] || "tr-TR";
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(Number(amount));
 }
 
 function ChevronRight(props) {
@@ -24,8 +27,8 @@ export default function MobileCreditCardCard({ card }) {
           <ChevronRight className="w-4 h-4 text-text-secondary shrink-0 ml-2" />
         </button>
         <div className="mt-4 text-right">
-          <p className="text-[40px] font-semibold text-text leading-tight">{formatMoney(card.balance)}</p>
-          <p className="text-sm text-text-secondary mt-1">Current balance · {formatMoney(available)} available</p>
+          <p className="text-[40px] font-semibold text-text leading-tight">{formatMoney(card.balance, card.currency)}</p>
+          <p className="text-sm text-text-secondary mt-1">Current balance · {formatMoney(available, card.currency)} available</p>
         </div>
       </div>
       <div className="px-5 py-3 border-t border-border flex justify-center gap-6 text-sm font-medium text-primary">

@@ -22,6 +22,7 @@ export default async function TransferPage() {
     accountNumber: a.accountNumber,
     type: a.type,
     balance: Number(a.balance),
+    currency: a.currency,
     frozen: a.frozen,
     frozenReason: a.frozenReason,
   }));

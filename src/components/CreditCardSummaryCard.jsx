@@ -1,5 +1,8 @@
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
+const CURRENCY_LOCALES = { TRY: "tr-TR", USD: "en-US", GBP: "en-GB", EUR: "de-DE" };
+
+function formatMoney(amount, currency = "TRY") {
+  const locale = CURRENCY_LOCALES[currency] || "tr-TR";
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(Number(amount));
 }
 
 export default function CreditCardSummaryCard({ card }) {
@@ -18,7 +21,7 @@ export default function CreditCardSummaryCard({ card }) {
         </div>
         <div className="sm:text-right">
           <p className="text-[13px] text-text-secondary">Current balance</p>
-          <p className="text-[38px] font-semibold text-text leading-tight">{formatMoney(card.balance)}</p>          <p className="text-xs text-text-secondary mt-1">{formatMoney(available)} available</p>
+          <p className="text-[38px] font-semibold text-text leading-tight">{formatMoney(card.balance, card.currency)}</p>          <p className="text-xs text-text-secondary mt-1">{formatMoney(available, card.currency)} available</p>
         </div>
       </div>
 

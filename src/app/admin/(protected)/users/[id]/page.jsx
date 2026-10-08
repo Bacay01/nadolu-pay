@@ -2,10 +2,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import AdminAccountRow from "@/components/admin/AdminAccountRow";
-
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
-}
+import AdminCreditCardRow from "@/components/admin/AdminCreditCardRow";
 
 export default async function AdminUserDetailPage({ params }) {
   const { id } = await params;
@@ -52,11 +49,20 @@ export default async function AdminUserDetailPage({ params }) {
       accountNumber: acc.accountNumber,
       type: acc.type,
       balance: Number(acc.balance),
+      currency: acc.currency,
       frozen: acc.frozen,
       frozenReason: acc.frozenReason,
       transactions,
     };
   });
+
+  const creditCards = user.creditCards.map((card) => ({
+    id: card.id,
+    cardNumber: card.cardNumber,
+    balance: Number(card.balance),
+    creditLimit: Number(card.creditLimit),
+    currency: card.currency,
+  }));
 
   return (
     <div>
@@ -75,16 +81,11 @@ export default async function AdminUserDetailPage({ params }) {
             {accounts.length === 0 && <p className="text-sm text-text-secondary">No accounts.</p>}
           </div>
 
-          {user.creditCards.length > 0 && (
+          {creditCards.length > 0 && (
             <div className="mt-6 pt-6 border-t border-border">
               <h2 className="text-lg font-semibold text-navy">Credit cards</h2>
-              {user.creditCards.map((card) => (
-                <div key={card.id} className="mt-3 border border-border rounded-lg p-4">
-                  <p className="text-sm font-medium text-text">•••• {card.cardNumber.slice(-4)}</p>
-                  <p className="text-xs text-text-secondary mt-1">
-                    {formatMoney(card.balance)} balance of {formatMoney(card.creditLimit)} limit
-                  </p>
-                </div>
+              {creditCards.map((card) => (
+                <AdminCreditCardRow key={card.id} card={card} />
               ))}
             </div>
           )}

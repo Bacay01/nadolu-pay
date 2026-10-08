@@ -1,7 +1,10 @@
 import Link from "next/link";
 
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
+const CURRENCY_LOCALES = { TRY: "tr-TR", USD: "en-US", GBP: "en-GB", EUR: "de-DE" };
+
+function formatMoney(amount, currency = "TRY") {
+  const locale = CURRENCY_LOCALES[currency] || "tr-TR";
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };
@@ -24,7 +27,7 @@ export default function AccountCard({ type, account }) {
                   </div>
         <div className="sm:text-right">
           <p className="text-[13px] text-text-secondary">Available balance</p>
-          <p className="text-[38px] font-semibold text-text leading-tight">{formatMoney(account.balance)}</p>
+          <p className="text-[38px] font-semibold text-text leading-tight">{formatMoney(account.balance, account.currency)}</p>
         </div>
       </div>
 

@@ -16,8 +16,11 @@ import RecentActivityCard from "@/components/RecentActivityCard";
 import LinkExternalAccountsCard from "@/components/LinkExternalAccountsCard";
 import OpenAccountSection from "@/components/OpenAccountSection";
 
-function formatMoney(amount) {
-  return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(Number(amount));
+const CURRENCY_LOCALES = { TRY: "tr-TR", USD: "en-US", GBP: "en-GB", EUR: "de-DE" };
+
+function formatMoney(amount, currency = "TRY") {
+  const locale = CURRENCY_LOCALES[currency] || "tr-TR";
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(Number(amount));
 }
 
 const typeLabels = { checking: "Checking", savings: "Savings" };
@@ -77,12 +80,14 @@ export default async function DashboardPage() {
     ...acc.sentTx.map((t) => ({
       ...t,
       direction: "sent",
+      currency: acc.currency,
       counterparty: t.to ? t.to.accountNumber : t.externalLabel || "an admin adjustment",
       fromLabel: `${typeLabels[acc.type] || acc.type} ••${acc.accountNumber.slice(-4)}`,
     })),
     ...acc.receivedTx.map((t) => ({
       ...t,
       direction: "received",
+      currency: acc.currency,
       counterparty: t.from ? t.from.accountNumber : t.externalLabel || "an admin adjustment",
       fromLabel: t.from
         ? `${typeLabels[t.from.type] || t.from.type} ••${t.from.accountNumber.slice(-4)}`
