@@ -204,7 +204,7 @@ export default async function LandingPage() {
             <ul className="space-y-2 text-sm text-white/60">
               <li>About</li>
               <li>Careers</li>
-              <li>Contact</li>
+              <li><a href="mailto:management@anadolupaybank.com" className="hover:text-white transition">management@anadolupaybank.com</a></li>
             </ul>
           </div>
           <div>
